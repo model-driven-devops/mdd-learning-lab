@@ -18,8 +18,8 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  
+  packages: write
+
 env:
   TAG: ghcr.io/${{ github.repository }}:latest
 
