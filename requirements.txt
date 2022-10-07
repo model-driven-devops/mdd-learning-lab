@@ -1,5 +1,5 @@
 ansible==4.5.0
-./files/virl2_client-2.2.2+build.52-py3-none-any.whl
+virl2_client==2.2.1.post2
 netaddr
 pynetbox
 jsonschema
