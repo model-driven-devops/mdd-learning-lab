@@ -1,0 +1,10 @@
+venv*/
+.virl/
+.virlrc
+*.pyc
+*.retry
+*.signed.bin
+.cache/
+ansible_collections/
+envvars
+packages

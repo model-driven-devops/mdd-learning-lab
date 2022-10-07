@@ -1,0 +1,15 @@
+ansible_user: developer
+ansible_password: C1sco12345
+ansible_python_interpreter: /usr/bin/python
+mdd_model_repos:
+  - name: nso-oc-services
+    model_list:
+      - mdd
+nso_become: no
+nso_installer_name: "nso-5.6.2.linux.x86_64.signed.bin"
+nso_install_type: local
+nso_install_from_local_file: yes
+nso_install_prerequisites: no
+nso_installer_file: "{{ lookup('env', 'PWD') }}/packages/nso-5.6.2.linux.x86_64.signed.bin"
+nso_ned_files:
+  - "{{ lookup('env', 'PWD') }}/packages/ncs-5.6.2-cisco-ios-6.77.5.signed.bin"

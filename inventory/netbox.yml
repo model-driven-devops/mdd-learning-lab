@@ -1,0 +1,22 @@
+---
+plugin: netbox.netbox.nb_inventory
+validate_certs: no
+flatten_custom_fields: yes
+flatten_config_context: yes
+config_context: yes
+fetch_all: yes
+interfaces: yes
+compose:
+  ansible_network_os: platform.slug
+  netbox_site: site.slug
+group_names_raw: yes
+group_by:
+  - sites
+  - region
+  - device_roles
+  - tags
+query_filters:
+  - tag: test
+groups:
+  network: is_virtual is false
+

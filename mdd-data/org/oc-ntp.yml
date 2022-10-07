@@ -1,0 +1,21 @@
+---
+mdd_data:
+  openconfig-system:system:
+    openconfig-system:clock:
+      config:
+        timezone-name: 'PST -8 0'
+    openconfig-system:ntp:
+      config:
+        enabled: true
+      servers:
+        server:
+          - address: '216.239.35.0'
+            config:
+              address: '216.239.35.0'
+              association-type: SERVER
+              iburst: true
+          - address: '216.239.35.4'
+            config:
+              address: '216.239.35.4'
+              association-type: SERVER
+              iburst: true

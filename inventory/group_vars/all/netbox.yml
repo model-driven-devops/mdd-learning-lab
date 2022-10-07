@@ -1,0 +1,350 @@
+---
+netbox_data:
+  regions:
+    - name: org
+    - name: region1
+      parent: org
+    - name: region2
+      parent: org
+  sites:
+    - name: hq
+      region: region1
+    - name: site1
+      region: region1
+    - name: site2
+      region: region2
+  device_roles:
+    - name: router
+      color: FF0000
+    - name: switch
+      color: 00FF00
+    - name: nso
+      color: 0000FF
+  manufacturers:
+    - name: cisco
+    - name: other
+  device_types:
+    - name: ios-xe
+      manufacturer: cisco
+    - name: other
+      manufacturer: other
+  tags:
+    - name: test
+    - name: site_outer
+    - name: hq_router
+    - name: bgp
+    - name: ospf
+    - name: switch
+  cluster_types:
+    - name: standalone
+  clusters:
+    - name: devbox
+      type: standalone
+  vlans:
+    - name: VLAN1
+      vid: 1
+    - name: VLAN10
+      vid: 10
+    - name: VLAN99
+      vid: 99
+  vrfs:
+    - name: Mgmt-intf
+  devices:
+    - name: hq-rtr1
+      role: router
+      site: hq
+      primary_ip4: 10.10.20.176/24
+      type: ios-xe
+      tags:
+        - test
+        - hq_router
+        - bgp
+        - ospf
+      interfaces:
+        - name: GigabitEthernet8
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.176/24
+          vrf: Mgmt-intf
+        - name: Loopback0
+          type: Virtual
+          address: 172.16.255.1/32
+        - name: Loopback100
+          type: Virtual
+          address: 10.255.255.11/32
+        - name: GigabitEthernet1
+          type: 1000BASE-T (1GE)
+          address: 10.0.0.2/30
+        - name: GigabitEthernet2
+          type: 1000BASE-T (1GE)
+          address: 172.16.0.2/24
+        # - name: GigabitEthernet2.10
+        #   type: Other
+        #   mode: Access
+        #   untagged_vlan:
+        #     name: VLAN10
+        #   address: 172.16.0.2/24
+        - name: GigabitEthernet3
+          type: 1000BASE-T (1GE)
+          address: 172.16.3.1/30
+    - name: hq-rtr2
+      role: router
+      site: hq
+      primary_ip4: 10.10.20.177/24
+      type: ios-xe
+      tags:
+        - test
+        - hq_router
+        - bgp
+        - ospf
+      interfaces:
+        - name: GigabitEthernet8
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.177/24
+          vrf: Mgmt-intf
+        - name: Loopback0
+          type: Virtual
+          address: 172.16.255.2/32
+        - name: Loopback100
+          type: Virtual
+          address: 10.255.255.12/32
+        - name: GigabitEthernet1
+          type: 1000BASE-T (1GE)
+          address: 10.0.0.6/30
+        - name: GigabitEthernet2
+          type: 1000BASE-T (1GE)
+          address: 172.16.0.3/24
+        # - name: GigabitEthernet2.10
+        #   type: Other
+        #   mode: Access
+        #   untagged_vlan:
+        #     name: VLAN10
+        #   address: 172.16.0.3/24
+        - name: GigabitEthernet3
+          type: 1000BASE-T (1GE)
+          address: 172.16.3.2/30
+    - name: hq-sw1
+      role: switch
+      site: hq
+      primary_ip4: 10.10.20.173/24
+      type: ios-xe
+      tags:
+        - test
+        - switch
+      interfaces:
+        - name: GigabitEthernet3/3
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.173/24
+          vrf: Mgmt-intf
+        - name: Loopback0
+          type: Virtual
+          address: 172.16.255.3/32
+        - name: VLAN10
+          type: Virtual
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+          address: 172.16.0.11/24
+        # - name: GigabitEthernet0/0
+        #   type: Link Aggregation Group (LAG)
+        #   mode: Tagged
+        #   untagged_vlan:
+        #     name: VLAN99
+        #   tagged_vlans:
+        #     - name: VLAN10
+        - name: GigabitEthernet0/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+        - name: GigabitEthernet0/1
+          type: Link Aggregation Group (LAG)
+          mode: Tagged
+          untagged_vlan:
+            name: VLAN99
+          tagged_vlans:
+            - name: VLAN10
+        - name: GigabitEthernet1/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+    - name: hq-sw2
+      role: switch
+      site: hq
+      primary_ip4: 10.10.20.174/24
+      type: ios-xe
+      tags:
+        - test
+        - switch
+      interfaces:
+        - name: GigabitEthernet3/3
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.174/24
+          vrf: Mgmt-intf
+        - name: Loopback0
+          type: Virtual
+          address: 172.16.255.4/32
+        - name: VLAN10
+          type: Virtual
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+          address: 172.16.0.12/24
+        # - name: GigabitEthernet0/0
+        #   type: Link Aggregation Group (LAG)
+        #   mode: Tagged
+        #   untagged_vlan:
+        #     name: VLAN99
+        #   tagged_vlans:
+        #     - name: VLAN10
+        - name: GigabitEthernet0/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+        - name: GigabitEthernet0/1
+          type: Link Aggregation Group (LAG)
+          mode: Tagged
+          untagged_vlan:
+            name: VLAN99
+          tagged_vlans:
+            - name: VLAN10
+        - name: GigabitEthernet1/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+    - name: site1-rtr1
+      role: router
+      site: site1
+      primary_ip4: 10.10.20.178/24
+      type: ios-xe
+      tags:
+        - test
+        - site_router
+      interfaces:
+        - name: GigabitEthernet8
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.178/24
+          vrf: Mgmt-intf
+        - name: Loopback0
+          type: Virtual
+          address: 192.168.255.1/32
+        - name: Loopback100
+          type: Virtual
+          address: 10.255.255.13/32
+        - name: GigabitEthernet1
+          type: 1000BASE-T (1GE)
+          address: 10.0.0.10/30
+        - name: GigabitEthernet2
+          type: 1000BASE-T (1GE)
+          address: 192.168.1.1/24
+        # - name: GigabitEthernet2.10
+        #   type: Other
+        #   mode: Access
+        #   untagged_vlan:
+        #     name: VLAN10
+        #   address: 192.168.1.1/24
+    - name: site1-sw1
+      role: switch
+      site: site1
+      primary_ip4: 10.10.20.175/24
+      type: ios-xe
+      tags:
+        - test
+        - switch
+      interfaces:
+        - name: GigabitEthernet3/3
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.175/24
+          vrf: Mgmt-intf
+        - name: GigabitEthernet1/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+        # - name: GigabitEthernet0/0
+        #   type: Link Aggregation Group (LAG)
+        #   mode: Tagged
+        #   untagged_vlan:
+        #     name: VLAN99
+        #   tagged_vlans:
+        #     - name: VLAN10
+        - name: GigabitEthernet0/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+    - name: site2-rtr1
+      role: router
+      site: site2
+      primary_ip4: 10.10.20.179/24
+      type: ios-xe
+      tags:
+        - test
+        - site_router
+      interfaces:
+        - name: GigabitEthernet8
+          type: 1000BASE-T (1GE)
+          address: 10.10.20.179/24
+          vrf: Mgmt-intf
+        - name: Loopback0
+          type: Virtual
+          address: 192.168.255.2/32
+        - name: Loopback100
+          type: Virtual
+          address: 10.255.255.14/32
+        - name: GigabitEthernet1
+          type: 1000BASE-T (1GE)
+          address: 10.0.0.14/30
+        - name: GigabitEthernet2
+          type: 1000BASE-T (1GE)
+          address: 192.168.2.1/24
+        # - name: GigabitEthernet2.10
+        #   type: Other
+        #   mode: Access
+        #   untagged_vlan:
+        #     name: VLAN10
+        #   address: 192.168.2.1/24
+    - name: site2-sw1
+      role: switch
+      site: site2
+      primary_ip4: 10.10.20.180/24
+      type: ios-xe
+      tags:
+        - test
+        - switch
+      interfaces:
+        - name: GigabitEthernet3/3
+          type: 1000BASE-T (1GE) 
+          address: 10.10.20.180/24
+          vrf: Mgmt-intf
+        - name: GigabitEthernet1/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+        # - name: GigabitEthernet0/0
+        #   type: Link Aggregation Group (LAG)
+        #   mode: Tagged
+        #   untagged_vlan:
+        #     name: VLAN99
+        #   tagged_vlans:
+        #     - name: VLAN10
+        - name: GigabitEthernet0/0
+          type: 1000BASE-T (1GE)
+          mode: Access
+          untagged_vlan:
+            name: VLAN10
+  virtual_machines:
+    - name: nso1
+      cluster: devbox
+      role: nso
+      site: hq
+      primary_ip4: 10.10.20.50/24
+      tags: test
+      interfaces:
+        - name: ens2
+          address: 10.10.20.50/24
+
+mdd_tags: "{{ tags | default(omit) }}"

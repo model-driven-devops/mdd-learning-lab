@@ -1,0 +1,130 @@
+- name: "Clean NetBox database"
+  connection: local
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Delete devices
+      netbox.netbox.netbox_device:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: "{{ item }}"
+        state: absent
+      with_items:
+        - core-rtr01
+        - core-rtr02
+        - devbox
+        - devtools
+        - dist-rtr01
+        - dist-rtr02
+        - dist-sw01
+        - dist-sw02
+        - edge-firewall01
+        - edge-sw01
+        - inside-host01
+        - inside-host02
+        - internet-host01
+        - internet-rtr01
+        - nso
+    - name: Delete prefixes
+      netbox.netbox.netbox_prefix:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          prefix: "{{ item }}"
+        state: absent
+      with_items:
+        - 10.10.20.0/24
+        - 172.16.101.0/24
+        - 172.16.102.0/24
+        - 172.16.103.0/24
+        - 172.16.104.0/24
+        - 172.16.105.0/24
+        - 172.16.252.0/30
+        - 172.16.252.4/30
+        - 172.16.252.8/30
+        - 172.16.252.12/30
+        - 172.16.252.16/30
+        - 172.16.252.20/30
+        - 172.16.252.24/30
+        - 172.16.252.28/30
+        - 172.16.252.32/30
+        - 172.16.252.36/30
+        - 172.16.253.0/29
+        - 172.31.0.0/24
+        - 172.31.252.0/24
+    - name: Delete VLANs
+      netbox.netbox.netbox_vlan:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: "{{ item }}"
+        state: absent
+      with_items:
+        - prod
+        - dev
+        - test
+        - security
+        - iot
+    - name: Delete VLAN groups
+      netbox.netbox.netbox_vlan_group:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: Sandbox VLAN Group
+        state: absent        
+    - name: Delete VRFs
+      netbox.netbox.netbox_vrf:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: Enterprise Network
+        state: absent
+      ignore_errors: yes
+    - name: Delete device roles
+      netbox.netbox.netbox_device_role:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: "{{ item }}"
+        state: absent
+      with_items:
+        - firewall
+        - load-balancer
+        - router
+        - server
+        - switch
+    - name: Delete device types
+      netbox.netbox.netbox_device_type:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          model: "{{ item }}"
+        state: absent
+      with_items:
+        - ASA
+        - IOS
+        - IOS XE
+        - IOS XR
+        - NX-OS
+        - Other
+    - name: Delete manufacturers
+      netbox.netbox.netbox_manufacturer:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: "{{ item }}"
+        state: absent
+      with_items:
+        - Cisco
+        - No Name
+    - name: Delete sites
+      netbox.netbox.netbox_site:
+        netbox_url: "{{ lookup('env', 'NETBOX_API') }}"
+        netbox_token: "{{ lookup('env', 'NETBOX_TOKEN') }}"
+        data:
+          name: "{{ item }}"
+        state: absent
+      with_items:
+        - Data Center
+        - Simulated Internet
