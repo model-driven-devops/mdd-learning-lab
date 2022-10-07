@@ -15,6 +15,11 @@ on:
         description: 'Image Tag'     
         required: true
         default: 'latest'
+
+permissions:
+  contents: read
+  pull-requests: write
+  
 env:
   TAG: ghcr.io/${{ github.repository }}:latest
 
