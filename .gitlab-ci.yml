@@ -104,4 +104,4 @@ load-rollback:
   resource_group: mdd
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-  when: always
+      when: always

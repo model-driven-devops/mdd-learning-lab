@@ -156,11 +156,11 @@ mdd_data:
                         - openconfig-network-instance:index: GigabitEthernet2
                           openconfig-network-instance:config:
                             openconfig-network-instance:index: GigabitEthernet2
-                            openconfig-network-instance:next-hop: LOCAL_LINK  
+                            openconfig-network-instance:next-hop: LOCAL_LINK
                           openconfig-network-instance:interface-ref:
                             openconfig-network-instance:config:
                               openconfig-network-instance:interface: GigabitEthernet2
-                          #     openconfig-network-instance:subinterface: 10
+                              # openconfig-network-instance:subinterface: 10
                   - openconfig-network-instance:prefix: 172.16.0.0/12
                     openconfig-network-instance:config:
                       openconfig-network-instance:prefix: 172.16.0.0/12
@@ -173,7 +173,7 @@ mdd_data:
                           openconfig-network-instance:interface-ref:
                             openconfig-network-instance:config:
                               openconfig-network-instance:interface: GigabitEthernet2
-                          #     openconfig-network-instance:subinterface: 10
+                              # openconfig-network-instance:subinterface: 10
                   - openconfig-network-instance:prefix: 192.168.0.0/16
                     openconfig-network-instance:config:
                       openconfig-network-instance:prefix: 192.168.0.0/16
@@ -186,7 +186,7 @@ mdd_data:
                           openconfig-network-instance:interface-ref:
                             openconfig-network-instance:config:
                               openconfig-network-instance:interface: GigabitEthernet2
-                          #     openconfig-network-instance:subinterface: 10
+                              # openconfig-network-instance:subinterface: 10
             - openconfig-network-instance:identifier: OSPF
               openconfig-network-instance:name: '100'
               openconfig-network-instance:config:

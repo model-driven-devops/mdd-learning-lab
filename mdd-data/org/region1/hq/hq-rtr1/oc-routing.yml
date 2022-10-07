@@ -20,4 +20,3 @@ mdd_data:
       - openconfig-network-instance:name: internal_1
         openconfig-network-instance:config:
           openconfig-network-instance:route-distinguisher: '1:1'
-
