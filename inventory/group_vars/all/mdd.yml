@@ -12,13 +12,13 @@ mdd_dir_items: >-
 # mdd_oc_patterns:
 #   - 'oc-*.yml'
 # # The file pattern for files that specify state checks
-# mdd_check_patterns:
-#   - 'check-*.yml'
+mdd_check_patterns:
+  - 'check-*.yml'
 # # default file location for JSON schemas
-# mdd_schema_root: "{{ lookup('env', 'PWD') }}/schemas"
+mdd_schema_root: "{{ lookup('env', 'PWD') }}/schemas"
 # # The file pattern for files that specify data validation
-# mdd_validate_patterns:
-#   - 'validate-*.yml'
+mdd_validate_patterns:
+  - 'validate-*.yml'
 nso_package_repos:
   - name: mdd
     repo: https://github.com/model-driven-devops/nso-oc-services.git
